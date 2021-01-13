@@ -32,8 +32,17 @@ INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALU
 
 INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 1, NULL, 3);
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (3, 2, 2, 1);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 2, 2, 1);
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (4, 3, 1, 2);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 3, 1, 2);
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (5, 4, 1, 1);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 4, 1, 1);
+
+
+
+
+
+
+Queries: 
+SELECT * FROM Recipe;
+SELECT * FROM RecipeIngredient;
