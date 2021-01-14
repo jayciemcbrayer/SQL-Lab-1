@@ -13,36 +13,47 @@ create table RecipeIngredient (recipe_id INT NOT NULL, ingredient_id INT NOT NUL
       CONSTRAINT fk_measure FOREIGN KEY(measure_id) REFERENCES Measure(id))
 
       ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO Measure (name) VALUES('CUP'), ('TEASPOON'), ('TABLESPOON'), ('WHOLE'), ('POUND);
-
-INSERT INTO Ingredient (name) VALUES('egg'), ('salt'), ('sugar'), ('chocolate'),('vanilla extract'), ('flour'), ('spinch'), ('peanut butter'), ('almond milk'), ('pasta'), ('canned sauce'), ('salt'), ('bread'), ('jelly');
-
+//Measurements used in recipies
+INSERT INTO Measure (name) VALUES('CUP'), ('TEASPOON'), ('TABLESPOON'), ('WHOLE');
+//Ingredients used in recipes
+INSERT INTO Ingredient (name) VALUES('egg'), ('salt'), ('sugar'), ('chocolate'), ('vanilla extract'), ('flour'),('spinch'), ('peanut butter'), ('almond milk'), ('pasta'), ('canned sauce'), ('bread'), ('jelly'), ('banana'), ('water');
+//Recipes
 INSERT INTO Recipe (name, description, instructions) VALUES('Boiled Egg', 'A single boiled egg', 'Add egg to cold water. Bring water to boil. Cook.');
 
 INSERT INTO Recipe (name, description, instructions) VALUES('Chocolate Cake', 'Yummy cake', 'Add eggs, flour, chocolate to pan. Bake at 350 for 1 hour');
 
-INSERT INTO Recipe (name, description, instructions) VALUES('PB Smoothie', 'Add spinach, peanut butter, banana, and almond milk to blender. Blend to a smooth consistency. Transfer to cup and drink.');
+INSERT INTO Recipe (name, description, instructions) VALUES('PB Smoothie', 'Peanut Butter and Banana Protein Shake', 'Add spinach, peanut butter, banana, and almond milk to blender. Blend to a smooth consistency. Transfer to cup and drink.');
 
-INSERT INTO Recipe (name, description, instructions) VALUES('Cooked Pasta','Simple pasta with canned sauce', 'Bring water to a boil. Add salt to boiling water. Stir in pasta and boil for 7 minutes. Strain and return to pot. Add sauce and enjoy.');
+INSERT INTO Recipe (name, description, instructions) VALUES('Cooked Pasta', 'Simple pasta with canned sauce', 'Bring water to a boil. Add salt to boiling water. Stir in pasta and boil for 7 minutes. Strain and return to pot. Add sauce and enjoy.');
 
 INSERT INTO Recipe (name, description, instructions) VALUES('PB and J', 'Peanut Butter and Jelly Sandwich', 'Add peanut butter to a slice of bread. Add jelly to another slice of bread. Put the slices together so the peanut butter and jelly are touching.');
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (1, 1, NULL, 1);
+//PB Smoothie
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (3, 7, 1, 1);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (3, 8, 3, 2);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (3, 14, 4, 1);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (3, 9, 1,1);
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 1, NULL, 3);
+//Cooked Pasta
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (4,15, 1, 6);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (4, 2, 3, 1);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (4, 10, 1, 3);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (4, 11, 4, 1);
 
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 2, 2, 1);
-
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 3, 1, 2);
-
-INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (2, 4, 1, 1);
-
-
-
+//PB&J
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (5, 12, 4, 2);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (5, 8, 3, 2);
+INSERT INTO RecipeIngredient (recipe_id, ingredient_id, measure_id, amount) VALUES (5, 13, 3, 2);
 
 
 
 Queries: 
-SELECT * FROM Recipe;
-SELECT * FROM RecipeIngredient;
+SELECT * FROM Recipe; //This gives a list of all the recipes
+
+SELECT * FROM Recipe WHERE name='Peanut Butter'; //This gives a list of recipies that use a certain ingredient (PB in this case)
+
+UPDATE Ingredient
+SET name = 'kale'
+WHERE name = 'spinach'; //This updates a recipe by changing an ingredient
+
+DELETE FROM Recipe WHERE ingredient_id= 7; //The final CRUD action, deletes the changed ingredient
